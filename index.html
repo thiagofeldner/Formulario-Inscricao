@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulário de Inscrição - Agência Peixe Vivo</title>
+  <meta name="description" content="Formulário de inscrição para o Processo Seletivo da Agência Peixe Vivo">
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Bloquear validação automática do navegador -->
+  <style>
+    input:invalid,
+    select:invalid,
+    textarea:invalid {
+      border-color: #e9ecef !important;
+      background: #f8f9fa !important;
+      box-shadow: none !important;
+    }
+
+    /* Necessário para funcionar navegação */
+    .page {
+      display: none;
+    }
+
+    .page.active {
+      display: block;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- CABEÇALHO COM IMAGEM COMO CAIXA SEPARADA -->
+  <header class="site-header" role="banner">
+    <div class="header-image" aria-hidden="true"></div>
+    <div class="header-content">
+      <h1 class="header-title">Formulário de Inscrição</h1>
+      <p class="header-subtitle">Processo Seletivo - Agência Peixe Vivo</p>
+    </div>
+  </header>
+
+  <!-- ALERTA VERMELHO -->
+  <div class="alert-box" role="alert" aria-live="polite">
+    <div class="alert-icon" aria-hidden="true">⚠️</div>
+    <div class="alert-content">
+      <strong>A FINALIZAÇÃO DA INSCRIÇÃO SOMENTE OCORRERÁ APÓS O PAGAMENTO E ENVIO DO COMPROVANTE DE INSCRIÇÃO.</strong>
+    </div>
+  </div>
+
+  <main class="container" role="main">
+    <form id="formInscricao" novalidate>
+      <div class="progress" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+        <div class="progress-bar" id="progressBar"></div>
+      </div>
+
+      <!-- Criar campo oculto para gerar INS-0000 -->
+      <input type="hidden" id="numeroInscricao" name="numeroInscricao">
+
+      <!-- PAGINA 1 -->
+      <section class="page active" id="page1" aria-labelledby="titulo-pagina1">
+        <h2 id="titulo-pagina1">1 — Dados Pessoais</h2>
+
+        <fieldset class="form-group">
+          <legend class="sr-only">Informações pessoais básicas</legend>
+
+          <div class="form-field">
+            <label for="nomeCompleto">Nome Completo</label>
+            <input type="text" id="nomeCompleto" name="nomeCompleto" placeholder="Digite seu nome completo" required>
+          </div>
+
+          <div class="flex-row">
+            <div class="form-field">
+              <label for="nascimento">Data de Nascimento</label>
+              <input type="date" id="nascimento" name="nascimento" required>
+            </div>
+            <div class="form-field">
+              <label for="email">E-mail</label>
+              <input type="email" id="email" name="email" placeholder="exemplo@exemplo.com" required>
+            </div>
+            <div class="form-field">
+              <label for="telefone">Telefone</label>
+              <input type="tel" id="telefone" name="telefone" placeholder="(00) 00000-0000" required>
+            </div>
+          </div>
+
+          <div class="flex-row">
+            <div class="form-field">
+              <label for="sexo">Sexo</label>
+              <select id="sexo" name="sexo" required>
+                <option value="">Selecione</option>
+                <option>Masculino</option>
+                <option>Feminino</option>
+              </select>
+            </div>
+            <div class="form-field">
+              <label for="genero">Gênero</label>
+              <select id="genero" name="genero" required>
+                <option value="">Selecione</option>
+                <option>Masculino</option>
+                <option>Feminino</option>
+                <option>Não-binário</option>
+                <option>Transgênero</option>
+                <option value="outro">Outro</option>
+                <option value="prefiro_nao_informar">Prefiro não informar</option>
+              </select>
+              <div id="campoOutroGenero" class="hidden">
+                <label for="generoOutro" class="sr-only">Especifique seu gênero</label>
+                <input type="text" id="generoOutro" name="generoOutro" placeholder="Informe seu gênero">
+              </div>
+            </div>
+          </div>
+
+          <div class="form-field">
+            <label for="estadoCivil">Estado Civil</label>
+            <select id="estadoCivil" name="estadoCivil" required>
+              <option value="">Selecione</option>
+              <option>Casado(a)</option>
+              <option>Divorciado(a)</option>
+              <option>Solteiro(a)</option>
+              <option value="outro">Outro</option>
+            </select>
+            <div id="campoOutroEstadoCivil" class="hidden">
+              <label for="estadoCivilOutro" class="sr-only">Especifique o estado civil</label>
+              <input type="text" id="estadoCivilOutro" name="estadoCivilOutro" placeholder="Informe o estado civil">
+            </div>
+          </div>
+
+          <div class="form-field">
+            <label for="mae">Nome da Mãe</label>
+            <input type="text" id="mae" name="mae" required>
+          </div>
+
+          <div class="form-field">
+            <label for="pai">Nome do Pai</label>
+            <input type="text" id="pai" name="pai">
+          </div>
+
+          <div class="form-field">
+            <label for="pcd">Portador de Necessidades Especiais?</label>
+            <select id="pcd" name="pcd" required>
+              <option value="">Selecione</option>
+              <option value="sim">Sim</option>
+              <option value="nao">Não</option>
+            </select>
+            <div id="campoPcdDescricao" class="hidden">
+              <label for="descricaoPcd">Descreva sua condição</label>
+              <textarea id="descricaoPcd" name="descricaoPcd"></textarea>
+            </div>
+          </div>
+        </fieldset>
+
+        <div class="actions">
+          <button type="button" class="btn primary next" aria-label="Avançar para próxima página">Avançar</button>
+        </div>
+      </section>
+
+      <!-- PAGINA 2 -->
+      <section class="page" id="page2" aria-labelledby="titulo-pagina2">
+        <h2 id="titulo-pagina2">2 — Documentação</h2>
+
+        <fieldset class="form-group">
+          <legend class="sr-only">Documentos pessoais</legend>
+
+          <div class="form-field">
+            <label for="rg">RG</label>
+            <input type="text" id="rg" name="rg" placeholder="00.000.000-0" required>
+          </div>
+
+          <div class="form-field">
+            <label for="cpf">CPF</label>
+            <input type="text" id="cpf" name="cpf" placeholder="000.000.000-00" required>
+          </div>
+
+          <div class="form-field">
+            <label for="cnh">Número da CNH</label>
+            <input type="text" id="cnh" name="cnh">
+          </div>
+        </fieldset>
+
+        <div class="actions">
+          <button type="button" class="btn prev" aria-label="Voltar para página anterior">Voltar</button>
+          <button type="button" class="btn primary next" aria-label="Avançar para próxima página">Avançar</button>
+        </div>
+      </section>
+
+      <!-- PAGINA 3 -->
+      <section class="page" id="page3" aria-labelledby="titulo-pagina3">
+        <h2 id="titulo-pagina3">3 — Endereço</h2>
+
+        <fieldset class="form-group">
+          <legend class="sr-only">Informações de endereço</legend>
+
+          <div class="form-field">
+            <label for="cep">CEP</label>
+            <input type="text" id="cep" name="cep" required>
+          </div>
+
+          <div class="form-field">
+            <label for="rua">Rua / Avenida</label>
+            <input type="text" id="rua" name="rua" required>
+          </div>
+
+          <div class="flex-row">
+            <div class="form-field">
+              <label for="numero">Número</label>
+              <input type="text" id="numero" name="numero" required>
+            </div>
+            <div class="form-field">
+              <label for="complemento">Complemento</label>
+              <input type="text" id="complemento" name="complemento">
+            </div>
+          </div>
+
+          <div class="form-field">
+            <label for="bairro">Bairro</label>
+            <input type="text" id="bairro" name="bairro" required>
+          </div>
+
+          <div class="flex-row">
+            <div class="form-field">
+              <label for="cidade">Cidade</label>
+              <input type="text" id="cidade" name="cidade" required>
+            </div>
+            <div class="form-field">
+              <label for="estado">Estado</label>
+              <input type="text" id="estado" name="estado" required>
+            </div>
+          </div>
+        </fieldset>
+
+        <div class="actions">
+          <button type="button" class="btn prev" aria-label="Voltar para página anterior">Voltar</button>
+          <button type="button" class="btn primary next" aria-label="Avançar para próxima página">Avançar</button>
+        </div>
+      </section>
+
+      <!-- PAGINA 4 -->
+      <section class="page" id="page4" aria-labelledby="titulo-pagina4">
+        <h2 id="titulo-pagina4">4 — Formação Acadêmica</h2>
+
+        <fieldset class="form-group">
+          <legend>Selecione todas as opções que possui</legend>
+
+          <div class="checkbox-group" id="formacaoGroup">
+            <label>
+              <input type="checkbox" name="formacao" value="medio">
+              <span>Ensino Médio</span>
+            </label>
+            <label>
+              <input type="checkbox" name="formacao" value="tecnico">
+              <span>Formação Técnica</span>
+            </label>
+            <label>
+              <input type="checkbox" name="formacao" value="superior">
+              <span>Superior</span>
+            </label>
+            <label>
+              <input type="checkbox" name="formacao" value="especializacao">
+              <span>Especialização</span>
+            </label>
+            <label>
+              <input type="checkbox" name="formacao" value="mestrado">
+              <span>Mestrado</span>
+            </label>
+            <label>
+              <input type="checkbox" name="formacao" value="doutorado">
+              <span>Doutorado</span>
+            </label>
+          </div>
+
+          <div id="camposExtrasFormacao"></div>
+        </fieldset>
+
+        <div class="actions">
+          <button type="button" class="btn prev" aria-label="Voltar para página anterior">Voltar</button>
+          <button type="button" class="btn primary next" aria-label="Avançar para próxima página">Avançar</button>
+        </div>
+      </section>
+
+      <!-- PAGINA 5 -->
+      <section class="page" id="page5" aria-labelledby="titulo-pagina5">
+        <h2 id="titulo-pagina5">5 — Informações Legais</h2>
+
+        <fieldset class="form-group">
+          <legend class="sr-only">Informações legais e LGPD</legend>
+
+          <div class="form-field">
+            <label for="origemInfo">Como obteve informação do Processo de Seleção?</label>
+            <select id="origemInfo" name="origemInfo" required>
+              <option value="">Selecione</option>
+              <option>Internet/Sites</option>
+              <option>Amigos/Conhecidos</option>
+              <option value="outro">Outro</option>
+            </select>
+            <div class="hidden" id="origemInfoOutroContainer">
+              <label for="origemInfoOutro" class="sr-only">Especifique como obteve a informação</label>
+              <input type="text" id="origemInfoOutro" placeholder="Informe qual">
+            </div>
+          </div>
+
+          <div class="form-field">
+            <label for="parentesco">Possui parentesco com funcionário da Agência Peixe Vivo?</label>
+            <select id="parentesco" name="parentesco" required>
+              <option value="">Selecione</option>
+              <option value="nao">Não</option>
+              <option value="sim">Sim</option>
+            </select>
+            <div id="campoGrauParentesco" class="hidden">
+              <label for="grauParentesco">Qual o grau de parentesco?</label>
+              <input type="text" id="grauParentesco" name="grauParentesco" placeholder="Qual o grau de parentesco?">
+            </div>
+          </div>
+
+          <div class="form-field">
+            <label for="funcionario">É funcionário da Agência Peixe Vivo?</label>
+            <select id="funcionario" name="funcionario" required>
+              <option value="">Selecione</option>
+              <option value="nao">Não</option>
+              <option value="sim">Sim</option>
+            </select>
+          </div>
+
+          <!-- Autorização LGPD ATUALIZADA COM ÍCONES -->
+          <div class="lgpd-container">
+            <h3 class="lgpd-label">LGPD - Autorização de Uso de Dados</h3>
+            <p class="lgpd-text">
+              Autorizo a Agência Peixe Vivo a dispor de meus dados pessoais, exclusivamente de forma a possibilitar a
+              efetiva execução do Processo Seletivo, em conformidade com a Lei Federal nº 13.709, de 2018, a Lei Geral
+              de
+              Proteção de Dados Pessoais - LGPD.
+            </p>
+
+            <div class="lgpd-buttons" role="radiogroup" aria-labelledby="lgpd-legend">
+              <span id="lgpd-legend" class="sr-only">Autorização de uso de dados</span>
+              <label class="lgpd-option">
+                <input type="radio" name="lgpd" value="sim" required>
+                <span class="lgpd-button lgpd-button-yes">
+                  <svg class="lgpd-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
+                  </svg>
+                  Sim, autorizo
+                </span>
+              </label>
+              <label class="lgpd-option">
+                <input type="radio" name="lgpd" value="nao">
+                <span class="lgpd-button lgpd-button-no">
+                  <svg class="lgpd-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path
+                      d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
+                  </svg>
+                  Não, não autorizo
+                </span>
+              </label>
+            </div>
+          </div>
+        </fieldset>
+
+        <div class="actions">
+          <button type="button" class="btn prev" aria-label="Voltar para página anterior">Voltar</button>
+          <button type="button" class="btn primary next" aria-label="Avançar para próxima página">Avançar</button>
+        </div>
+      </section>
+
+      <!-- PAGINA 6 -->
+      <section class="page" id="page6" aria-labelledby="titulo-pagina6">
+        <h2 id="titulo-pagina6">6 — Cargos e Envio</h2>
+
+        <fieldset class="form-group">
+          <legend class="sr-only">Informações do cargo e pagamento</legend>
+
+          <div class="form-field">
+            <label for="funcao">Função</label>
+            <select id="funcao" name="funcao" required>
+              <option value="">Selecione</option>
+              <option>Auxiliar Administrativo</option>
+              <option>Analista Mobilização</option>
+              <option>Analista Projetos</option>
+              <option>Coordenador TI</option>
+              <option>Coordenador Projetos (Engenharia)</option>
+            </select>
+          </div>
+
+          <div class="form-field">
+            <label for="lotacao">Cidade de Lotação</label>
+            <select id="lotacao" name="lotacao" required>
+              <option value="">Selecione</option>
+              <option>Belo Horizonte/MG</option>
+              <option>Betim/MG</option>
+              <option>Montes Claros/MG</option>
+              <option>Paracatu/MG</option>
+            </select>
+          </div>
+
+          <div class="form-field">
+            <label for="taxa">Taxa de Inscrição</label>
+            <select id="taxa" name="taxa" required>
+              <option value="">Selecione</option>
+              <option value="isento">Isento</option>
+              <option value="50">Médio - R$50,00</option>
+              <option value="70">Analista - R$70,00</option>
+              <option value="120">Coordenador - R$120,00</option>
+            </select>
+          </div>
+
+          <!-- Container para informações de isenção -->
+          <div id="infoIsento" class="hidden">
+            <div class="isento-info">
+              <p><strong>2.15</strong> Não haverá isenção total ou parcial do valor da taxa de inscrição, exceto para o
+                candidato que:</p>
+              <p><strong>2.15.1</strong> Comprovar estar inscrito no Cadastro Único para Programas Sociais do Governo
+                Federal – CadÚnico, ou</p>
+              <p><strong>2.15.2</strong> For membro de família de baixa renda, nos termos do Legislação Federal.</p>
+              <p>O interessado que preencher os requisitos do subitem anterior e desejar isenção do pagamento da taxa de
+                inscrição neste processo de seleção e recrutamento deverá preencher o requerimento próprio, conforme
+                modelo – anexo VI deste Ato Convocatório, anexar comprovante abaixo.</p>
+            </div>
+          </div>
+
+          <!-- Container Pix/QRCode (visível apenas quando NÃO for isento) -->
+          <div id="camposPagamento" class="hidden">
+            <div class="pix-container">
+              <img id="qrcodeImage" src="" class="qrcode" alt="QR Code PIX para pagamento">
+              <div class="pix-info">
+                <h3>Pagamento via PIX</h3>
+                <p class="muted">Taxa de inscrição: <strong id="valorTaxa">R$ 50,00</strong></p>
+
+                <div class="pix-key-container">
+                  <label for="pixKey">Chave PIX (copie e cole):</label>
+                  <div class="pix-key-wrapper">
+                    <input type="text" id="pixKey" readonly>
+                    <button type="button" id="copyPixButton" class="btn-copy">Copiar</button>
+                  </div>
+                </div>
+
+                <p class="muted">Escaneie o QR Code ou copie a chave PIX para pagamento</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-field">
+            <label for="comprovante" id="labelComprovante">Envie o comprovante de pagamento</label>
+            <input type="file" id="comprovante" name="comprovante" accept=".pdf,.jpg,.jpeg,.png" required>
+          </div>
+        </fieldset>
+
+        <div class="actions">
+          <button type="button" class="btn prev" aria-label="Voltar para página anterior">Voltar</button>
+          <button type="submit" class="btn primary">Enviar Inscrição</button>
+        </div>
+      </section>
+
+    </form>
+  </main>
+
+  <script src="script.js"></script>
+
+  <!-- RODAPÉ -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-content">
+      <p class="footer-copyright">© 2025 Agência Peixe Vivo. Todos os direitos reservados.</p>
+      <p class="footer-credits">Desenvolvido por <strong>Thiago Feldner</strong> - InterOp</p>
+    </div>
+  </footer>
+</body>
+
+</html>

@@ -1,0 +1,409 @@
+/* confirmacao.css - VERSÃO MELHORADA */
+
+/* RESET MELHORADO */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  /* VARIÁVEIS CSS PARA CONSISTÊNCIA */
+  --primary-color: #1D4ED8;
+  --primary-light: #2d89ff;
+  --success-color: #28a745;
+  --text-dark: #2c3e50;
+  --text-light: #6c757d;
+  --bg-light: #f5f6fa;
+  --white: #ffffff;
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  --border-radius: 16px;
+  --transition: all 0.3s ease;
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background: linear-gradient(135deg, #f5f6fa 0%, #e9ecef 100%);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  line-height: 1.6;
+  color: var(--text-dark);
+}
+
+/* --------------------- */
+/* CABEÇALHO MELHORADO */
+/* --------------------- */
+.site-header {
+  width: 100%;
+  max-width: min(800px, 90vw);
+  margin: 0 auto 30px auto;
+  text-align: center;
+  background: none;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.header-image {
+  width: 100%;
+  height: 140px;
+  background-image: url("../img/cabecalho.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: var(--border-radius) var(--border-radius) 0 0;
+  position: relative;
+}
+
+.header-image::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(45, 137, 255, 0.1) 0%, transparent 100%);
+  border-radius: inherit;
+}
+
+.header-content {
+  width: 100%;
+  padding: 20px 30px;
+  background: var(--primary-color);
+  border-radius: 0 0 var(--border-radius) var(--border-radius);
+}
+
+.header-title {
+  font-size: clamp(1.25rem, 2vw, 1.5rem);
+  font-weight: 600;
+  margin: 0 0 5px 0;
+  color: var(--white);
+  letter-spacing: -0.5px;
+}
+
+.header-subtitle {
+  font-size: clamp(0.875rem, 1.5vw, 1rem);
+  opacity: 0.9;
+  margin: 0;
+  color: #e9ecef;
+  line-height: 1.4;
+}
+
+/* --------------------- */
+/* CONTAINER DE CONFIRMAÇÃO MELHORADO */
+/* --------------------- */
+.confirmation-container {
+  background: var(--white);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  padding: clamp(25px, 5vw, 40px);
+  text-align: center;
+  max-width: min(800px, 90vw);
+  width: 100%;
+  margin-bottom: 20px;
+  animation: fadeInUp 0.6s ease;
+}
+
+.confirmation-icon {
+  font-size: clamp(3rem, 8vw, 5rem);
+  margin-bottom: 20px;
+  color: var(--success-color);
+  animation: bounceIn 0.8s ease;
+  filter: drop-shadow(0 4px 8px rgba(40, 167, 69, 0.3));
+}
+
+.confirmation-title {
+  color: var(--text-dark);
+  margin-bottom: 20px;
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--text-dark), #1D4ED8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.confirmation-message {
+  background: #e8f5e8;
+  padding: clamp(20px, 4vw, 25px);
+  border-radius: 10px;
+  margin: 25px 0;
+  text-align: center;
+  border-left: 4px solid var(--success-color);
+  position: relative;
+}
+
+.confirmation-message::before {
+  content: '💡';
+  position: absolute;
+  left: -10px;
+  top: -10px;
+  background: var(--white);
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.confirmation-message p {
+  margin-bottom: 15px;
+  font-size: clamp(0.9rem, 2vw, 1rem);
+  line-height: 1.6;
+  color: var(--text-dark);
+}
+
+.confirmation-message p:last-child {
+  margin-bottom: 0;
+}
+
+.next-steps {
+  background: #e3f2fd;
+  padding: clamp(20px, 4vw, 25px);
+  border-radius: 10px;
+  margin: 25px 0;
+  text-align: left;
+  border-left: 4px solid var(--primary-light);
+  position: relative;
+}
+
+.next-steps h3 {
+  color: var(--text-dark);
+  margin-bottom: 15px;
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.next-steps h3::before {
+  content: '🎯';
+  font-size: 1.2em;
+}
+
+.next-steps ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.next-steps li {
+  padding: 8px 0;
+  padding-left: 30px;
+  position: relative;
+  color: var(--text-light);
+  transition: var(--transition);
+}
+
+.next-steps li:hover {
+  color: var(--text-dark);
+  transform: translateX(5px);
+}
+
+.next-steps li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--success-color);
+  font-weight: bold;
+  font-size: 1.1em;
+  transition: var(--transition);
+}
+
+.next-steps li:hover::before {
+  transform: scale(1.2);
+}
+
+.contact-info {
+  margin-top: 25px;
+  padding: 20px;
+  background: #f8f9fa;
+  border-radius: 10px;
+  color: var(--text-light);
+  font-size: clamp(0.8rem, 2vw, 0.9rem);
+  border: 1px solid #e9ecef;
+}
+
+.btn-back {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+  padding: clamp(12px, 3vw, 14px) clamp(24px, 4vw, 28px);
+  background: linear-gradient(135deg, var(--primary-light), #1a6fd9);
+  color: white;
+  text-decoration: none;
+  border-radius: 10px;
+  font-weight: 600;
+  transition: var(--transition);
+  border: none;
+  cursor: pointer;
+  font-size: clamp(0.9rem, 2vw, 1rem);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-back::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s;
+}
+
+.btn-back:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(45, 137, 255, 0.4);
+}
+
+.btn-back:hover::before {
+  left: 100%;
+}
+
+.btn-back:active {
+  transform: translateY(0);
+}
+
+/* --------------------- */
+/* RODAPÉ MELHORADO */
+/* --------------------- */
+.site-footer {
+  width: 100%;
+  max-width: min(800px, 90vw);
+  margin: 20px auto 0 auto;
+  padding: clamp(20px, 4vw, 25px) clamp(25px, 4vw, 30px);
+  text-align: center;
+  background: var(--primary-color);
+  color: #e9ecef;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+}
+
+.footer-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer-copyright {
+  font-size: clamp(0.8rem, 2vw, 0.9rem);
+  opacity: 0.9;
+  margin: 0;
+  font-weight: 500;
+  color: var(--white);
+}
+
+.footer-credits {
+  font-size: clamp(0.75rem, 2vw, 0.8rem);
+  opacity: 0.9;
+  margin: 0;
+  color: #f8f9fa;
+}
+
+.footer-credits strong {
+  color: #4dabf7;
+  font-weight: 600;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  transition: var(--transition);
+}
+
+.footer-credits:hover strong {
+  color: #74c0fc;
+  transform: scale(1.05);
+}
+
+/* --------------------- */
+/* ANIMAÇÕES MELHORADAS */
+/* --------------------- */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+
+  70% {
+    transform: scale(0.9);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* --------------------- */
+/* ESTADOS DE FOCUS PARA ACESSIBILIDADE */
+/* --------------------- */
+.btn-back:focus-visible {
+  outline: 3px solid var(--primary-light);
+  outline-offset: 2px;
+}
+
+.next-steps li:focus-within {
+  color: var(--text-dark);
+  transform: translateX(5px);
+}
+
+/* --------------------- */
+/* RESPONSIVIDADE MELHORADA */
+/* --------------------- */
+@media (max-width: 768px) {
+  body {
+    padding: 15px;
+  }
+
+  .confirmation-message::before {
+    left: 50%;
+    top: -15px;
+    transform: translateX(-50%);
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    padding: 10px;
+  }
+
+  .next-steps li {
+    padding-left: 25px;
+  }
+}
+
+/* --------------------- */
+/* REDUÇÃO DE MOTION PARA ACESSIBILIDADE */
+/* --------------------- */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

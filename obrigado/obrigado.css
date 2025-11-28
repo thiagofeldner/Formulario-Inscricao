@@ -1,0 +1,520 @@
+/* obrigado.css - Versão Otimizada */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #f5f6fa 0%, #e9ecef 100%);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+    line-height: 1.6;
+    color: #495057;
+}
+
+/* =============================== */
+/* CABEÇALHO - PÁGINA DE OBRIGADO */
+/* =============================== */
+.site-header {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto 30px auto;
+    padding: 0;
+    text-align: center;
+    background: none;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.header-image {
+    width: 100%;
+    height: 140px;
+    background-image: url("../img/cabecalho.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 12px 12px 0 0;
+    position: relative;
+}
+
+.header-image::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(45, 137, 255, 0.1) 0%, transparent 100%);
+    border-radius: 12px 12px 0 0;
+}
+
+.header-content {
+    width: 100%;
+    padding: 20px 30px;
+    background: #1D4ED8;
+    border-radius: 0 0 12px 12px;
+}
+
+.header-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0 0 5px 0;
+    color: #ffffff;
+    letter-spacing: -0.5px;
+}
+
+.header-subtitle {
+    font-size: 14px;
+    opacity: 0.9;
+    margin: 0;
+    color: #e9ecef;
+    line-height: 1.4;
+}
+
+/* =============================== */
+/* CONTAINER DE OBRIGADO */
+/* =============================== */
+.thank-you-container {
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    text-align: center;
+    max-width: 800px;
+    width: 100%;
+    margin-bottom: 10px;
+    animation: fadeInUp 0.6s ease;
+}
+
+.thank-you-icon {
+    font-size: 80px;
+    margin-bottom: 25px;
+    color: #6c757d;
+    animation: fadeInUp 0.8s ease, gentleBounce 2s ease-in-out 0.8s;
+}
+
+@keyframes gentleBounce {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+.thank-you-title {
+    color: #dc3545;
+    margin-bottom: 25px;
+    font-size: 26px;
+    font-weight: 600;
+    line-height: 1.4;
+    padding: 0 10px;
+}
+
+.thank-you-message {
+    background: #f8f9fa;
+    padding: 25px;
+    border-radius: 10px;
+    margin: 25px 0;
+    text-align: center;
+    border-left: 4px solid #6c757d;
+}
+
+.thank-you-message p {
+    margin-bottom: 15px;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #2c3e50;
+}
+
+.thank-you-message p:last-child {
+    margin-bottom: 0;
+}
+
+.thank-you-message strong {
+    color: #2c3e50;
+    font-weight: 600;
+}
+
+.respect-message {
+    background: #f0f9ff;
+    padding: 25px;
+    border-radius: 10px;
+    margin: 25px 0;
+    text-align: left;
+    border-left: 4px solid #0ea5e9;
+}
+
+.respect-message h3 {
+    color: #0369a1;
+    margin-bottom: 15px;
+    font-size: 18px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.respect-message ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.respect-message li {
+    padding: 10px 0;
+    padding-left: 30px;
+    position: relative;
+    color: #0369a1;
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+.respect-message li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: #0ea5e9;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.contact-info {
+    margin-top: 25px;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 10px;
+    color: #6c757d;
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+.contact-info strong {
+    color: #2c3e50;
+    font-weight: 600;
+}
+
+.btn-back {
+    display: inline-block;
+    margin-top: 25px;
+    padding: 14px 28px;
+    background: linear-gradient(135deg, #6c757d, #495057);
+    color: white;
+    text-decoration: none;
+    border-radius: 10px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    min-width: 200px;
+}
+
+.btn-back:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(108, 117, 125, 0.4);
+    background: linear-gradient(135deg, #495057, #343a40);
+}
+
+.btn-back:active {
+    transform: translateY(0);
+}
+
+/* =============================== */
+/* RODAPÉ - PÁGINA DE OBRIGADO */
+/* =============================== */
+.site-footer {
+    width: 100%;
+    max-width: 800px;
+    margin: 20px auto 0 auto;
+    padding: 25px 30px;
+    text-align: center;
+    background: #1D4ED8;
+    color: #e9ecef;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    box-sizing: border-box;
+}
+
+.footer-content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.footer-copyright {
+    font-size: 15px;
+    opacity: 0.9;
+    margin: 0;
+    font-weight: 500;
+    color: #ffffff;
+}
+
+.footer-credits {
+    font-size: 14px;
+    opacity: 0.9;
+    margin: 0;
+    color: #f8f9fa;
+}
+
+.footer-credits strong {
+    color: #4dabf7;
+    font-weight: 600;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.footer-credits:hover strong {
+    color: #74c0fc;
+    transition: color 0.3s ease;
+}
+
+/* =============================== */
+/* ANIMAÇÕES */
+/* =============================== */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.thank-you-container {
+    animation: fadeInUp 0.6s ease;
+}
+
+.thank-you-icon {
+    animation: fadeInUp 0.8s ease, gentleBounce 2s ease-in-out 0.8s;
+}
+
+/* =============================== */
+/* RESPONSIVIDADE */
+/* =============================== */
+@media (max-width: 768px) {
+    body {
+        padding: 30px 15px;
+    }
+
+    .site-header {
+        max-width: calc(100% - 40px);
+        margin: 0 auto 30px auto;
+        border-radius: 10px;
+    }
+
+    .header-image {
+        height: 100px;
+        border-radius: 10px 10px 0 0;
+    }
+
+    .header-image::after {
+        border-radius: 10px 10px 0 0;
+    }
+
+    .header-content {
+        padding: 18px 25px;
+        border-radius: 0 0 10px 10px;
+    }
+
+    .header-title {
+        font-size: 16px;
+    }
+
+    .header-subtitle {
+        font-size: 13px;
+    }
+
+    .thank-you-container {
+        padding: 30px 25px;
+        border-radius: 12px;
+        margin-bottom: 30px;
+    }
+
+    .thank-you-title {
+        font-size: 22px;
+        padding: 0 5px;
+    }
+
+    .thank-you-message {
+        padding: 20px;
+    }
+
+    .thank-you-icon {
+        font-size: 70px;
+    }
+
+    .respect-message {
+        padding: 20px;
+    }
+
+    .respect-message li {
+        padding: 8px 0;
+        padding-left: 25px;
+        font-size: 14px;
+    }
+
+    .contact-info {
+        padding: 18px;
+        font-size: 14px;
+    }
+
+    .btn-back {
+        padding: 12px 24px;
+        font-size: 15px;
+        min-width: 180px;
+    }
+
+    .site-footer {
+        max-width: calc(100% - 40px);
+        margin: 15px auto 0 auto;
+        padding: 20px 25px;
+        border-radius: 10px;
+    }
+
+    .footer-content {
+        gap: 8px;
+    }
+
+    .footer-copyright {
+        font-size: 14px;
+    }
+
+    .footer-credits {
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 20px 10px;
+    }
+
+    .site-header {
+        max-width: calc(100% - 20px);
+        margin: 0 auto 25px auto;
+        border-radius: 8px;
+    }
+
+    .header-image {
+        height: 80px;
+        border-radius: 8px 8px 0 0;
+    }
+
+    .header-image::after {
+        border-radius: 8px 8px 0 0;
+    }
+
+    .header-content {
+        padding: 15px 20px;
+        border-radius: 0 0 8px 8px;
+    }
+
+    .header-title {
+        font-size: 15px;
+    }
+
+    .header-subtitle {
+        font-size: 12px;
+    }
+
+    .thank-you-container {
+        padding: 25px 20px;
+        border-radius: 10px;
+        margin-bottom: 25px;
+    }
+
+    .thank-you-title {
+        font-size: 20px;
+        margin-bottom: 20px;
+    }
+
+    .thank-you-icon {
+        font-size: 60px;
+        margin-bottom: 20px;
+    }
+
+    .thank-you-message {
+        padding: 18px;
+        margin: 20px 0;
+    }
+
+    .thank-you-message p {
+        font-size: 15px;
+    }
+
+    .respect-message {
+        padding: 18px;
+        margin: 20px 0;
+    }
+
+    .respect-message h3 {
+        font-size: 16px;
+    }
+
+    .respect-message li {
+        font-size: 14px;
+        padding: 6px 0;
+        padding-left: 22px;
+    }
+
+    .contact-info {
+        margin-top: 20px;
+        padding: 15px;
+        font-size: 14px;
+    }
+
+    .btn-back {
+        margin-top: 20px;
+        padding: 12px 20px;
+        font-size: 14px;
+        min-width: 160px;
+    }
+
+    .site-footer {
+        max-width: calc(100% - 20px);
+        margin: 10px auto 0 auto;
+        padding: 18px 20px;
+    }
+
+    .footer-copyright {
+        font-size: 13px;
+    }
+
+    .footer-credits {
+        font-size: 12px;
+    }
+}
+
+/* =============================== */
+/* ESTADOS DE FOCO PARA ACESSIBILIDADE */
+/* =============================== */
+.btn-back:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(108, 117, 125, 0.3);
+}
+
+/* =============================== */
+/* MELHORIAS DE PERFORMANCE */
+/* =============================== */
+@media (prefers-reduced-motion: reduce) {
+
+    .thank-you-container,
+    .thank-you-icon {
+        animation: none;
+    }
+
+    .btn-back:hover {
+        transform: none;
+    }
+}
