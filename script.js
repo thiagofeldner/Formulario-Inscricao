@@ -1,3 +1,46 @@
+// CONTROLE SIMPLES DE PERÍODO
+const inicio = new Date("2025-12-04T18:00:00");
+const fim = new Date("2026-01-19T18:00:00");
+const agora = new Date();
+
+if (agora < inicio || agora > fim) {
+  // Remove apenas o conteúdo do container principal, mantém cabeçalho e rodapé
+  const container = document.querySelector(".container");
+  const alertBox = document.querySelector(".alert-box");
+
+  if (container) {
+    container.innerHTML = `
+            <div style="min-height: 60vh; display: flex; align-items: center; justify-content: center; padding: 20px;">
+                <div class="periodo-aviso">
+                    <div class="aviso-icon">${
+                      agora < inicio ? "⏰" : "✅"
+                    }</div>
+                    <h2 class="aviso-titulo">${
+                      agora < inicio
+                        ? "Formulário em Breve"
+                        : "Inscrições Encerradas"
+                    }</h2>
+                    <p class="aviso-texto">
+                        ${
+                          agora < inicio
+                            ? "Início: 04/12/2025 às 18h"
+                            : "Encerramento: 19/01/2026 às 18h"
+                        }
+                    </p>
+                    <div class="aviso-contato">
+                        Dúvidas? <strong>selecao024.025@gmail.com</strong>
+                    </div>
+                </div>
+            </div>
+        `;
+  }
+
+  // Remove o alerta vermelho se existir
+  if (alertBox) {
+    alertBox.style.display = "none";
+  }
+}
+
 const pages = document.querySelectorAll(".page");
 const nextBtns = document.querySelectorAll(".next");
 const prevBtns = document.querySelectorAll(".prev");
@@ -66,7 +109,7 @@ function atualizarInformacoesPix() {
     document.getElementById("valorTaxa").textContent = config.valor;
     document.getElementById("qrcodeImage").src = config.imagem;
     document.getElementById("pixKey").value = config.chavePix;
-    
+
     console.log("✅ PIX atualizado para:", funcaoSelecionada);
   }
 }
@@ -77,7 +120,7 @@ function atualizarTaxaPorFuncao() {
   const taxaSelect = document.getElementById("taxa");
   const funcaoSelecionada = funcaoSelect.value;
   const config = cargosConfig[funcaoSelecionada];
-  
+
   if (config && taxaSelect) {
     // Se não for isento, atualiza para a taxa correspondente
     if (taxaSelect.value !== "isento") {
@@ -85,10 +128,10 @@ function atualizarTaxaPorFuncao() {
       // Atualiza o display visual
       atualizarDisplayTaxa();
     }
-    
+
     // Atualiza as opções da taxa
     atualizarOpcoesTaxa(funcaoSelecionada);
-    
+
     // Atualiza informações PIX se não for isento
     if (taxaSelect.value !== "isento") {
       atualizarInformacoesPix();
@@ -100,11 +143,11 @@ function atualizarTaxaPorFuncao() {
 function atualizarOpcoesTaxa(funcaoSelecionada) {
   const taxaSelect = document.getElementById("taxa");
   const config = cargosConfig[funcaoSelecionada];
-  
+
   if (config && taxaSelect) {
     // Encontra e atualiza a opção correspondente ao valor
-    const opcoesTaxa = taxaSelect.querySelectorAll('option');
-    opcoesTaxa.forEach(opcao => {
+    const opcoesTaxa = taxaSelect.querySelectorAll("option");
+    opcoesTaxa.forEach((opcao) => {
       if (opcao.value === config.valorNumero) {
         opcao.textContent = config.valorTexto;
       }
@@ -116,7 +159,7 @@ function atualizarOpcoesTaxa(funcaoSelecionada) {
 function atualizarDisplayTaxa() {
   const taxaSelect = document.getElementById("taxa");
   const valorSelecionado = taxaSelect.value;
-  
+
   // Cria ou atualiza o elemento de display
   let taxaDisplay = document.getElementById("taxaDisplay");
   if (!taxaDisplay) {
@@ -129,7 +172,7 @@ function atualizarDisplayTaxa() {
     taxaDisplay.style.textAlign = "center";
     taxaSelect.parentNode.appendChild(taxaDisplay);
   }
-  
+
   if (valorSelecionado === "isento") {
     // Mostrar texto de isenção
     taxaDisplay.textContent = "Isento de Taxa";
@@ -141,7 +184,7 @@ function atualizarDisplayTaxa() {
     const funcaoSelect = document.querySelector('select[name="funcao"]');
     const funcaoSelecionada = funcaoSelect.value;
     const config = cargosConfig[funcaoSelecionada];
-    
+
     if (config) {
       taxaDisplay.textContent = `Taxa de Inscrição: ${config.valor}`;
       taxaDisplay.style.background = "#fff3cd";
@@ -480,7 +523,7 @@ function validatePage(pageIndex) {
     const cpfInput = document.getElementById("cpf");
     if (cpfInput) {
       const cpfLimpo = cpfInput.value.replace(/\D/g, "");
-      
+
       if (cpfLimpo.length > 0 && cpfLimpo.length < 11) {
         valid = false;
         const error = document.createElement("div");
@@ -488,8 +531,7 @@ function validatePage(pageIndex) {
         error.textContent = "CPF incompleto. Digite os 11 números.";
         cpfInput.parentNode.appendChild(error);
         cpfInput.classList.add("invalido");
-      }
-      else if (cpfLimpo.length === 11 && !validarCPF(cpfInput.value)) {
+      } else if (cpfLimpo.length === 11 && !validarCPF(cpfInput.value)) {
         valid = false;
         const error = document.createElement("div");
         error.className = "error-message";
@@ -622,8 +664,10 @@ checkboxesFormacao.forEach((checkbox) => {
     const existingField = document.getElementById(this.value + "Input");
 
     if (this.checked && !existingField) {
-      const labelText = this.parentElement.querySelector('span').textContent.trim();
-      
+      const labelText = this.parentElement
+        .querySelector("span")
+        .textContent.trim();
+
       const input = document.createElement("input");
       input.type = "text";
       input.placeholder = `Informe seus cursos em ${labelText}`;
@@ -881,7 +925,7 @@ function initializeForm() {
   // ✅ ATUALIZAÇÃO: Event listeners para função e taxa
   const funcaoSelect = document.querySelector('select[name="funcao"]');
   if (funcaoSelect) {
-    funcaoSelect.addEventListener("change", function() {
+    funcaoSelect.addEventListener("change", function () {
       atualizarTaxaPorFuncao();
       toggleCamposTaxa();
     });
