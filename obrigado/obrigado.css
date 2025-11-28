@@ -518,3 +518,62 @@ body {
         transform: none;
     }
 }
+
+.contact-info {
+    margin-top: 25px;
+    padding: 25px;
+    background: #f8f9ff;
+    border-radius: 12px;
+    border-left: 4px solid var(--primary-color);
+    text-align: center;
+}
+
+.email-highlight {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 15px;
+    padding: 15px 25px;
+    background: white;
+    border-radius: 10px;
+    border: 2px solid #e3f2fd;
+    box-shadow: 0 4px 12px rgba(45, 137, 255, 0.15);
+    justify-content: center;
+    min-width: 300px;
+}
+
+.email-icon {
+    font-size: 22px;
+    flex-shrink: 0;
+}
+
+.email-link {
+    color: var(--primary-color);
+    font-weight: 700;
+    font-size: 16px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.email-link:hover {
+    color: var(--primary-dark);
+    text-decoration: underline;
+    transform: translateY(-1px);
+}
+
+/* Texto do contact-info também centralizado */
+.contact-info p {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+@media (max-width: 480px) {
+    .email-highlight {
+        min-width: 250px;
+        padding: 12px 20px;
+    }
+    
+    .email-link {
+        font-size: 14px;
+    }
+}
