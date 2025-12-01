@@ -114,7 +114,7 @@ body {
 .header-image {
     width: 100%;
     height: 140px;
-    background-image: url("img/cabecalho.png");
+    background-image: url("../img/cabecalho.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -794,7 +794,7 @@ textarea:invalid:focus {
 }
 
 .footer-credits strong {
-    color: #4dabf7;
+    color: var(--bg-white);
     font-weight: 600;
 }
 
