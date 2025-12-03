@@ -2,7 +2,7 @@
 
 function verificarPeriodoDisponibilidade() {
   // Período: 04/12/2025 18:00 até 19/01/2026 18:00
-  const dataInicio = new Date("2025-12-01T08:00:00");
+  const dataInicio = new Date("2025-12-04T18:00:00");
   const dataFim = new Date("2026-01-19T18:00:00");
   const agora = new Date();
 
