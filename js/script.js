@@ -67,7 +67,7 @@ function atualizarInformacoesPix() {
     document.getElementById("qrcodeImage").src = config.imagem;
     document.getElementById("pixKey").value = config.chavePix;
 
-    console.log("✅ PIX atualizado para:", funcaoSelecionada);
+    //console.log("✅ PIX atualizado para:", funcaoSelecionada);
   }
 }
 
