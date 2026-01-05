@@ -54,88 +54,6 @@ const cargosConfig = {
 };
 
 /* ------------------------- */
-/*  FILTRAR CIDADES POR FUNÇÃO - ATUALIZADO */
-/* ------------------------- */
-
-// Configuração das cidades por função (ATUALIZADO)
-const cidadesPorFuncao = {
-  // Auxiliar Administrativo - somente Montes Claros/MG
-  "Auxiliar Administrativo": ["Montes Claros/MG"],
-  
-  // Analista Mobilização - somente Belo Horizonte/MG e Paracatu/MG
-  "Analista Mobilização": ["Belo Horizonte/MG", "Paracatu/MG"],
-  
-  // Analista Projetos - Betim, Montes Claros e Paracatu
-  "Analista Projetos": ["Betim/MG", "Montes Claros/MG", "Paracatu/MG"],
-  
-  // Coordenador TI - somente Belo Horizonte/MG
-  "Coordenador TI": ["Belo Horizonte/MG"],
-  
-  // Coordenador Projetos (Engenharia) - Paracatu e Montes Claros
-  "Coordenador Projetos (Engenharia)": ["Paracatu/MG", "Montes Claros/MG"]
-};
-
-// Função para atualizar as opções de cidade baseado na função selecionada
-function atualizarCidadesPorFuncao() {
-  const funcaoSelect = document.querySelector('select[name="funcao"]');
-  const cidadeSelect = document.getElementById("lotacao");
-  
-  if (!funcaoSelect || !cidadeSelect) return;
-  
-  const funcaoSelecionada = funcaoSelect.value;
-  const cidadesDisponiveis = cidadesPorFuncao[funcaoSelecionada] || 
-                             ["Belo Horizonte/MG", "Betim/MG", "Montes Claros/MG", "Paracatu/MG"];
-  
-  // Salvar o valor atual selecionado (se existir)
-  const valorAtual = cidadeSelect.value;
-  
-  // Limpar todas as opções exceto a primeira (Selecione)
-  while (cidadeSelect.options.length > 1) {
-    cidadeSelect.remove(1);
-  }
-  
-  // Adicionar as cidades disponíveis para esta função
-  cidadesDisponiveis.forEach(cidade => {
-    const option = document.createElement("option");
-    option.value = cidade;
-    option.textContent = cidade;
-    cidadeSelect.appendChild(option);
-  });
-  
-  // Restaurar o valor selecionado anteriormente, se ainda estiver disponível
-  if (valorAtual && cidadesDisponiveis.includes(valorAtual)) {
-    cidadeSelect.value = valorAtual;
-  } else {
-    // Se a cidade anterior não está mais disponível, selecionar a primeira disponível
-    cidadeSelect.value = cidadesDisponiveis[0] || "";
-  }
-  
-  // Atualizar a validação
-  cidadeSelect.required = true;
-}
-
-// Função para inicializar as opções da cidade (chamada quando a página carrega)
-function inicializarOpcoesCidade() {
-  const cidadeSelect = document.getElementById("lotacao");
-  
-  if (cidadeSelect) {
-    // Limpar opções existentes (exceto a primeira)
-    while (cidadeSelect.options.length > 1) {
-      cidadeSelect.remove(1);
-    }
-    
-    // Adicionar todas as cidades inicialmente
-    const todasCidades = ["Belo Horizonte/MG", "Betim/MG", "Montes Claros/MG", "Paracatu/MG"];
-    todasCidades.forEach(cidade => {
-      const option = document.createElement("option");
-      option.value = cidade;
-      option.textContent = cidade;
-      cidadeSelect.appendChild(option);
-    });
-  }
-}
-
-/* ------------------------- */
 /*  ATUALIZAR INFORMAÇÕES PIX */
 /* ------------------------- */
 
@@ -1030,7 +948,7 @@ form.addEventListener("submit", async function (e) {
 });
 
 /* ------------------------- */
-/*  INICIALIZAÇÃO - MODIFICADA */
+/*  INICIALIZAÇÃO */
 /* ------------------------- */
 
 function initializeForm() {
@@ -1055,21 +973,12 @@ function initializeForm() {
     funcaoSelect.addEventListener("change", function () {
       atualizarTaxaPorFuncao();
       toggleCamposTaxa();
-      atualizarCidadesPorFuncao(); // ✅ NOVA LINHA - Atualiza cidades quando função muda
     });
   }
 
   const taxaSelect = document.getElementById("taxa");
   if (taxaSelect) {
     taxaSelect.addEventListener("change", toggleCamposTaxa);
-  }
-
-  // ✅ NOVO: Inicializar opções de cidade
-  inicializarOpcoesCidade();
-  
-  // ✅ NOVO: Se já tiver uma função selecionada, atualizar as cidades
-  if (funcaoSelect && funcaoSelect.value) {
-    atualizarCidadesPorFuncao();
   }
 
   toggleCamposTaxa();
